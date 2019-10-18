@@ -1,11 +1,11 @@
-build:
-    box: python:2.7
-    steps:
-    
-- internal/docker-build:
-    dockerfile: 8.0/Dockerfile
-    image-name: mysql-8.0-image
-
+--- 
+build: 
+  box: "python:2.7"
+steps: 
+  - 
+    internal/docker-build: 
+      dockerfile: 8.0/Dockerfile
+      image-name: mysql-8.0-image
 - internal/docker-push:
             image-name: mysql-8.0-image
             cmd: 0.0.0.0 8080
