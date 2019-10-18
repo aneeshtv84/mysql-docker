@@ -5,18 +5,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: mysql-8.0-srv
+  name: mysql-8.0-db
   labels:
     commit: ${WERCKER_GIT_COMMIT}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql-8.0-srv
+      app: mysql-8.0-db
   template:
     metadata:
       labels:
-        app: mysql-8.0-srv
+        app: mysql-8.0-db
         commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
