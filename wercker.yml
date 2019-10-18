@@ -4,7 +4,6 @@ build:
 
         # Take our tested application revision and its dependencies, bake it in to a
     # Docker image, and push to OCIR.
-
 - internal/docker-build:
     dockerfile: 8.0/Dockerfile
     image-name: mysql-8.0-image
