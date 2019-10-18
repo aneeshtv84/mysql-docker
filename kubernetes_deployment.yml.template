@@ -5,25 +5,25 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: mysql-8.0-db
+  name: mysql-8-db
   labels:
     commit: ${WERCKER_GIT_COMMIT}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql-8.0-db
+      app: mysql-8-db
   template:
     metadata:
       labels:
-        app: mysql-8.0-db
+        app: mysql-8-db
         commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
-      - name: mysql-8.0-pod
+      - name: mysql-8-pod
         image: ${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
         ports:
-        - name: mysql-8.0-pod
+        - name: mysql-8-pod
           containerPort: 8080
           protocol: TCP
       imagePullSecrets:
