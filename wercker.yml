@@ -6,13 +6,12 @@ build:
     # application, our entry script will also install the application's dependencies
     # with Virtualenv
     - internal/docker-build:
-             dockerfile: Dockerfile
+             dockerfile: 8.0/Dockerfile
              image-name: mysql-8.0-img
 
         # Take our tested application revision and its dependencies, bake it in to a
     # Docker image, and push to OCIR.
     - internal/docker-push:
-            entrypoint: 8.0/Dockerfile
             image-name: mysql-8.0-img
             cmd: 0.0.0.0 8080
             working-dir: $WERCKER_ROOT
