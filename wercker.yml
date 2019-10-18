@@ -6,7 +6,7 @@ build:
     # Docker image, and push to OCIR.
 
 - internal/docker-build:
-    dockerfile: Dockerfile
+    dockerfile: 8.0/Dockerfile
     image-name: mysql-8.0-image
 
 - internal/docker-push:
