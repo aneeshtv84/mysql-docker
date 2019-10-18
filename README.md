@@ -103,4 +103,4 @@ A number of MySQL products are included in the Docker container you created with
 
 ### More Topics on Deploying MySQL Server with Docker
 
-For more topics on deploying MySQL Server with Docker like starting and connecting to the server, server configuration, persisting data and configuration, server error log, server upgrades, and the Docker environment variables, see [Deploying MySQL Server with Docker](https://dev.mysql.com/doc/refman/8.0/en/linux-installation-docker.html) in the MySQL Server manual.
+For more topics on deploying MySQL Server with Docker like starting and connecting to the server, server configuration, persisting data and configuration, server error log, server upgrades, and the Docker environment variables, see [Deploying MySQL Server with Docker](https://dev.mysql.com/doc/refman/8.0/en/linux-installation-docker.html) in the MySQL Server manual..
