@@ -1,17 +1,19 @@
-
 build:
     box: python:2.7
     steps:
 
+    # Check that our application's tests are passing. Since this is a python
+    # application, our entry script will also install the application's dependencies
+    # with Virtualenv
+    - internal/docker-build:
+             dockerfile: Dockerfile
+             image-name: mysql-8.0-img
+
         # Take our tested application revision and its dependencies, bake it in to a
     # Docker image, and push to OCIR.
-
-- internal/docker-build:
-    dockerfile: Dockerfile
-    image-name: mysql-8.0-image
-
-- internal/docker-push:
-            image-name: mysql-8.0-image
+    - internal/docker-push:
+            entrypoint: 8.0/Dockerfile
+            image-name: mysql-8.0-img
             cmd: 0.0.0.0 8080
             working-dir: $WERCKER_ROOT
             tag: $WERCKER_GIT_COMMIT
@@ -53,7 +55,7 @@ deploy-to-kubernetes:
         server: $OKE_MASTER
         token: $OKE_TOKEN
         insecure-skip-tls-verify: true
-        command: patch deployment/mysql-8.0-serv -p '{"spec":{"progressDeadlineSeconds":300}}'
+        command: patch deployment/get-ip -p '{"spec":{"progressDeadlineSeconds":300}}'
 
     # Watch the Kubernetes deployment. Once the pods are considered healthy the step will exit 0
     # If they aren't healthy within 60 seconds, it will exit with a non 0 exit code, and cause the run to fail.
@@ -62,4 +64,4 @@ deploy-to-kubernetes:
         server: $OKE_MASTER
         token: $OKE_TOKEN
         insecure-skip-tls-verify: true
-        command: rollout status deployment/mysql-8.0-serv
+        command: rollout status deployment/get-ip
